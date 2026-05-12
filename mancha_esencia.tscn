@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dnw7ec84e7h2k"]
+
+[ext_resource type="Texture2D" uid="uid://simereb221j2" path="res://Mancha1.png" id="1_plao6"]
+[ext_resource type="Script" uid="uid://hdn7ugrf0gcg" path="res://mancha_esencia.gd" id="2_2q75i"]
+
+[node name="ManchaEsencia" type="Sprite2D" unique_id=1492224775]
+z_index = -1
+texture = ExtResource("1_plao6")
+script = ExtResource("2_2q75i")

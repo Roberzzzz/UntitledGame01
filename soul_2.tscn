@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://by1pk7lvxsxic"]
+
+[ext_resource type="Script" uid="uid://bgioshpkslktt" path="res://soul_2.gd" id="1_1rriy"]
+[ext_resource type="Texture2D" uid="uid://b2lcqih4x1251" path="res://SVessel-Idle.png" id="1_vj1gc"]
+[ext_resource type="Texture2D" uid="uid://6ow3xnftbtq7" path="res://SVessel-Run.png" id="2_d6bso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5ngx"]
+size = Vector2(13, 27)
+
+[sub_resource type="Animation" id="Animation_vj1gc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vj1gc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1rriy"]
+resource_name = "Run"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_d6bso")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_d6bso"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vj1gc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rriy"]
+_data = {
+&"RESET": SubResource("Animation_vj1gc"),
+&"Run": SubResource("Animation_1rriy"),
+&"idle": SubResource("Animation_d6bso")
+}
+
+[node name="soul_2" type="CharacterBody2D" unique_id=613217289]
+script = ExtResource("1_1rriy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1239240432]
+position = Vector2(1.5, -14.5)
+shape = SubResource("RectangleShape2D_o5ngx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=568943230]
+position = Vector2(1, -15)
+texture = ExtResource("1_vj1gc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=290301323]
+libraries/ = SubResource("AnimationLibrary_1rriy")
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=182681419]
+wait_time = 10.0
+one_shot = true
